@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pesquisa/lista-proteina"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ obj.TSeq_accver }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-text>
+    <p><a style="font-weight: bold;">Definition: </a>{{ obj.TSeq_defline }}</p>
+    <p><a style="font-weight: bold;">Organism: </a>{{ obj.TSeq_orgname }}</p>
+    <p><a style="font-weight: bold;">Sequence: </a>{{ obj.TSeq_sequence }}</p>
+    <p><a style="font-weight: bold;">Tax id: </a>{{ obj.TSeq_taxid }}</p>
+  </ion-text>
+</ion-content>

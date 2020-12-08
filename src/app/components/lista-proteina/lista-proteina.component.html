@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pesquisa"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resultado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <ion-list>
+    <ng-container *ngFor="let item of listaProteina">
+      <ion-item (click)="detalheProteina(item.TSeq_accver)">
+        <ion-label class="ion-text-wrap">
+            <ion-text color="primary">
+              <h3>{{ item.TSeq_accver }}</h3>
+            </ion-text>
+            <p>{{ item.TSeq_defline }}</p>
+            <ion-text color="secondary">
+              <p>{{ item.TSeq_orgname }}</p>
+            </ion-text>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

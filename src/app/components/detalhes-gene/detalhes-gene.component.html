@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pesquisa/lista-gene"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ obj.Entrezgene_gene["Gene-ref"]["Gene-ref_locus"] }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-text>
+    <p><a style="font-weight: bold;">Definition: </a>{{ obj.Entrezgene_gene["Gene-ref"]["Gene-ref_desc"] }}</p>
+    <p><a style="font-weight: bold;">Locus: </a>{{ obj.Entrezgene_gene["Gene-ref"]["Gene-ref_locus"] }}</p>
+    <p><a style="font-weight: bold;">Map loc: </a>{{ obj.Entrezgene_gene["Gene-ref"]["Gene-ref_maploc"] }}</p>
+    <p><a style="font-weight: bold;">Organism: </a>{{ obj.Entrezgene_source.BioSource.BioSource_org["Org-ref"]["Org-ref_common"] }}</p>
+    <p><a style="font-weight: bold;">Lineage: </a>{{ obj.Entrezgene_source.BioSource.BioSource_org["Org-ref"]["Org-ref_orgname"].OrgName.OrgName_lineage }}</p>
+    <p><a style="font-weight: bold;">Tax name: </a>{{ obj.Entrezgene_source.BioSource.BioSource_org["Org-ref"]["Org-ref_taxname"] }}</p>
+    <p><a style="font-weight: bold;">Term: </a>{{ obj["Entrezgene_xtra-index-terms"]["Entrezgene_xtra-index-terms_E"] }}</p>
+    <p><a style="font-weight: bold;">Species: </a>{{ obj.Entrezgene_source.BioSource.BioSource_org["Org-ref"]["Org-ref_orgname"].OrgName.OrgName_name.OrgName_name_binomial.BinomialOrgName.BinomialOrgName_species }}</p>
+    <ng-container *ngFor="let item of proteinList">
+      <p><a style="font-weight: bold;">Protein: </a>{{ item }}</p>
+    </ng-container>
+  </ion-text>
+</ion-content>

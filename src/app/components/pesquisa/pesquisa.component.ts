@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 import { GeneService } from 'src/app/services/gene.service';
 import { ESearchResult } from 'src/app/services/models/Pesquisa';
@@ -14,24 +15,16 @@ export class PesquisaComponent implements OnInit {
   nome = '';
   obj: any;
 
-  constructor(private service: GeneService, private ngxXml2jsonService: NgxXml2jsonService) { }
+  constructor(
+    private service: GeneService,
+    private ngxXml2jsonService: NgxXml2jsonService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {}
 
-  pesquisar(){
-    this.service.get('gene', 'nonagouti').subscribe(x => {
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(x, 'text/xml');
-      this.obj = this.ngxXml2jsonService.xmlToJson(xml);
-
-      this.service.getContent('gene', this.obj.eSearchResult[1].IdList.Id.toString()).subscribe(x => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(x, 'text/xml');
-        const obj = this.ngxXml2jsonService.xmlToJson(xml);
-        console.log(obj);
-      });
-
-    });
+  pesquisar() {
+    this.service.pesquisar(this.proteinaGene, this.nome);
   }
 
   permitePesquisar(): boolean {

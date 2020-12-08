@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pesquisa"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resultado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <ion-list>
+    <ng-container *ngFor="let item of listaGene">
+      <ion-item (click)="detalheGene(item['Entrezgene_unique-keys'].Dbtag[0].Dbtag_tag['Object-id']['Object-id_id'])">
+        <ion-label class="ion-text-wrap">
+            <ion-text color="primary">
+              <h3>{{ item.Entrezgene_gene["Gene-ref"]["Gene-ref_locus"] }}</h3>
+            </ion-text>
+            <p>{{ item.Entrezgene_gene["Gene-ref"]["Gene-ref_desc"] }}</p>
+            <ion-text color="secondary">
+              <p>{{ item["Entrezgene_xtra-index-terms"]["Entrezgene_xtra-index-terms_E"] }}</p>
+            </ion-text>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>
