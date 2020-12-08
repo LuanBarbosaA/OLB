@@ -23,7 +23,7 @@ export class GeneService {
    getContent(db: string, ids: string): Observable<string>{
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.httpClient.get(
-      this.urlContent + `&db=${db}&ids=${ids}`,
+      this.urlContent + `&db=${db}&id=${ids}`,
       { headers, responseType: 'text'}
     );
    }
