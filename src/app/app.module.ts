@@ -8,6 +8,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxXml2jsonModule } from 'ngx-xml2json';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +18,9 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxXml2jsonModule
   ],
   providers: [
     StatusBar,
