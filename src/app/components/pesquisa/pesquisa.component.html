@@ -3,18 +3,51 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Pesquisa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
+      <ion-title size="large">Pesquisa</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <ion-button (click) = "pesquisar()"> Pesquisar</ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-align-self-center">
+          <ion-toolbar>
+            <ion-searchbar [(ngModel)]="nome"></ion-searchbar>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-radio-group [(ngModel)]="proteinaGene">
+        <ion-row>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label>Proteínas</ion-label>
+              <ion-radio slot="start" value="protein"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label>Genes</ion-label>
+              <ion-radio slot="start" value="gene"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>        
+      </ion-radio-group>
+    </ion-grid>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-align-self-center" size="6">
+          <ion-button (click) = "pesquisar()" [disabled]="permitePesquisar()">Pesquisar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
